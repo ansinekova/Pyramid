@@ -7,29 +7,23 @@ public class Pyramid {
         this.rings = new Ring[]{r1, r2, r3, r4};
     }
 
-    // Рисование пирамиды
     public void draw() {
-        drawLevel(0); // Начинаем с верхнего кольца
+        drawLevel(0);
     }
 
-    // Рекурсивный метод, который рисует каждое кольцо
     private void drawLevel(int level) {
-        // Проверка, что мы не вышли за пределы 4 колец
         if (level < 4) {
             Ring current = rings[level];
 
-            // Если кольцо есть (не null), рисуем его
             if (current != null) {
                 int indent = (9 - current.getWidth()) / 2;
                 current.draw(indent);
             }
 
-            // Переходим к следующему кольцу
             drawLevel(level + 1);
         }
     }
 
-    // Оценка правильности
     public void check() {
         boolean ok =
                 rings[0] != null && rings[0].getNumber() == 1 &&
